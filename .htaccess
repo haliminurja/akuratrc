@@ -1,0 +1,80 @@
+# MULAI: Penataan Ulang URL dengan mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Menjaga header Otorisasi HTTP
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Mengarahkan permintaan ke index.php jika file atau direktori tidak ada
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Memblokir akses ke direktori sensitif Laravel
+    RewriteRule ^(bootstrap|storage|tests|lang|vendor|database|config|resources|routes|app)/ - [F,L]
+</IfModule>
+# SELESAI: Penataan Ulang URL
+
+# MULAI: Pembatasan Akses File
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh|env)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(^\.|^composer\.|\.yml|\.xml|\.md|\.git|\.txt)">
+    Require all denied
+</FilesMatch>
+# SELESAI: Pembatasan Akses File
+
+# MULAI: Pengaturan Cache dengan mod_expires
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+</IfModule>
+# SELESAI: Pengaturan Cache
+
+# MULAI: Kompresi dengan mod_deflate
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript image/svg+xml
+</IfModule>
+# SELESAI: Kompresi
+
+<IfModule mod_setenvif.c>
+    SetEnvIf Request_URI "(image\.js|security\.js|ui\.js|dexieload\.js)$" DONT_CACHE
+</IfModule>
+
+# MULAI: Keamanan Header HTTP
+<IfModule mod_headers.c>
+    Header always unset X-Powered-By
+    Header always unset Server
+
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0" env=DONT_CACHE
+    Header set Pragma "no-cache" env=DONT_CACHE
+
+    Header always set Referrer-Policy "no-referrer-when-downgrade"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header set X-Permitted-Cross-Domain-Policies "none"
+    Header set X-DNS-Prefetch-Control "off"
+    Header set Cross-Origin-Embedder-Policy "same-origin"
+    Header set Cross-Origin-Opener-Policy "same-origin"
+</IfModule>
+# SELESAI: Keamanan Header HTTP
+
+# MULAI: Opsi dan Indeksasi
+Options +FollowSymLinks -Indexes
+IndexIgnore *
+ServerSignature Off
+# SELESAI: Opsi dan Indeksasi
+
