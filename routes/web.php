@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\JenisJabatanController;
+use App\Http\Controllers\Admin\JenisLayananController;
+use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\MisiController;
+use App\Http\Controllers\Admin\MitraController;
 use App\Http\Controllers\Admin\SejarahController;
 use App\Http\Controllers\Admin\VisiController;
 use App\Http\Controllers\LandingController;
@@ -16,6 +20,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('sejarah', SejarahController::class);
     Route::resource('visi', VisiController::class);
     Route::resource('misi', MisiController::class);
+    Route::resource('mitra', MitraController::class);
+    Route::resource('kategori', KategoriController::class);
+    Route::resource('jenis_jabatan', JenisJabatanController::class);
+    Route::resource('jenis_layanan', JenisLayananController::class);
 
 });
 Route::get('/', [LandingController::class, 'index'])->name('index');
+Route::get('file/{folder}/{data}', [LandingController::class, 'file'])->where('data', '.*');

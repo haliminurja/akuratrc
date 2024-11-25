@@ -41,7 +41,7 @@
                         <span class="menu-icon"></span>
                         <span class="menu-title">Misi</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.mitra.index') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Lembaga Mitra</span>
                     </a>
@@ -115,15 +115,15 @@
                     <span class="menu-arrow"></span>
                 </span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.kategori.index') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Kategori Berita</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.jenis_jabatan.index') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Jenis Jabatan</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.jenis_layanan.index') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Jenis Layanan</span>
                     </a>
