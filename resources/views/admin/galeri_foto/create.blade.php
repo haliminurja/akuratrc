@@ -9,43 +9,31 @@
         <div class="card mb-5 mb-xl-8 border-2 shadow p-3 mb-5 bg-white rounded">
             <div class="card-header">
                 <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label fw-bolder fs-3 mb-1">mitra</span>
+                    <span class="card-label fw-bolder fs-3 mb-1">galeri foto</span>
                 </h3>
 
             </div>
-            <form action="{{ route('admin.mitra.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.galeri_foto.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     @include('errors.alert')
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
-                            <span>Mitra</span>
+                            <span>Judul</span>
                         </label>
-                        <input type="text" name="nama_mitra" class="form-control form-control-sm " required />
-                    </div>
-                    <div class="d-flex flex-column mb-8 fv-row">
-                        <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
-                            <span>Kabupaten</span>
-                        </label>
-                        <input type="text" name="kabupaten" class="form-control form-control-sm " required />
-                    </div>
-                    <div class="d-flex flex-column mb-8 fv-row">
-                        <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
-                            <span>Alamat</span>
-                        </label>
-                        <input type="text" name="alamat_mitra" class="form-control form-control-sm " required />
+                        <input type="text" name="judul_foto" class="form-control form-control-sm " required />
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Deskripsi</span>
                         </label>
-                        <textarea type="text" name="deskripsi_mitra" class="form-control form-control-sm " required></textarea>
+                        <textarea type="text" name="deskripsi" class="form-control form-control-sm " required></textarea>
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Foto</span>
                         </label>
-                        <input type="file" id="foto_mitra" name="foto_mitra" class="form-control form-control-sm "  onchange="previewFoto()" required />
+                        <input type="file" id="foto" name="foto" class="form-control form-control-sm "  onchange="previewFoto()" required />
                         <div id="previewContainer" class="mt-3"></div>
                     </div>
                     <div class="text-center">
@@ -63,7 +51,7 @@
     <script src="{{ asset('assets/plugins/custom/select/bootstrap-select.min.js') }}"></script>
     <script>
         function previewFoto() {
-            const input = document.getElementById('foto_mitra');
+            const input = document.getElementById('foto');
             const previewContainer = document.getElementById('previewContainer');
             previewContainer.innerHTML = ''; // Menghapus pratinjau sebelumnya
 

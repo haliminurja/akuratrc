@@ -45,9 +45,9 @@
                         <span class="menu-icon"></span>
                         <span class="menu-title">Lembaga Mitra</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.struktur.index') }}">
                         <span class="menu-icon"></span>
-                        <span class="menu-title">Stuktur</span>
+                        <span class="menu-title">struktur</span>
                     </a>
                     <a class="menu-link" href="">
                         <span class="menu-icon"></span>
@@ -86,11 +86,11 @@
                     <span class="menu-arrow"></span>
                 </span>
                 <div class="menu-sub menu-sub-accordion menu-active-bg">
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.galeri_foto.index') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Foto</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.galeri_video.index') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Video</span>
                     </a>
