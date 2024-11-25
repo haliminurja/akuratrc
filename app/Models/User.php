@@ -19,8 +19,8 @@ class User extends Authenticable
         'alamat',
         'telp',
         'email',
-        'user',
-        'pass',
+        'username',
+        'password',
         'status',
     ];
 }

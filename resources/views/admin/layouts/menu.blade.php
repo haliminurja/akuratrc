@@ -7,7 +7,6 @@
 
         <div class="menu-item">
             <a class="menu-link" href="">
-                <span class="menu-icon"></span>
                 <span class="menu-title">Dashboard</span>
             </a>
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
@@ -57,14 +56,16 @@
                         <span class="menu-icon"></span>
                         <span class="menu-title">Info Utama</span>
                     </a>
+                    <a class="menu-link" href="{{ route('admin.user.index') }}">
+                        <span class="menu-icon"></span>
+                        <span class="menu-title">Pengguna</span>
+                    </a>
                 </div>
             </div>
             <a class="menu-link" href="{{ route('admin.layanan.index') }}">
-                <span class="menu-icon"></span>
                 <span class="menu-title">Layanan</span>
             </a>
             <a class="menu-link" href="{{ route('admin.berita.index') }}">
-                <span class="menu-icon"></span>
                 <span class="menu-title">Publikasi</span>
             </a>
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion">

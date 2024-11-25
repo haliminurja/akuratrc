@@ -13,7 +13,7 @@ class LandingController extends Controller
 {
     public function index()
     {
-        if (Auth::guard('user')->check()) {
+        if (Auth::guard('web')->check()) {
             return redirect()->route('admin.index');
         }
         $header = DB::table('tb_header')->where('status', 'y')->first();

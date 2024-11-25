@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\MisiController;
 use App\Http\Controllers\Admin\MitraController;
 use App\Http\Controllers\Admin\SejarahController;
 use App\Http\Controllers\Admin\StrukturController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\VisiController;
 use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('header', HeaderController::class);
     Route::resource('layanan', LayananController::class);
     Route::resource('berita', BeritaController::class);
-
+    Route::resource('user', UserController::class);
+    Route::post('user/edit/all', [UserController::class, 'edit_multi'])->name('user.edit.all');
 });
 Route::get('/', [LandingController::class, 'index'])->name('index');
 Route::get('file/{folder}/{data}', [LandingController::class, 'file'])->where('data', '.*');
