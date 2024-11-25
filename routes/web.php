@@ -42,3 +42,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 Route::get('/', [LandingController::class, 'index'])->name('index');
 Route::get('file/{folder}/{data}', [LandingController::class, 'file'])->where('data', '.*');
+
+Route::get('/visi-misi', [LandingController::class, 'visiMisi'])->name('visi-misi');
+Route::get('/layanan/{layanan}', [LandingController::class, 'layanan'])->name('layanan');
+Route::get('/publikasi', [LandingController::class, 'berita'])->name('berita');
+Route::get('/publikasi/{id}', [LandingController::class, 'beritaDetail'])->name('berita-detail');
