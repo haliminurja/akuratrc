@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 25, 2024 at 05:30 AM
+-- Generation Time: Nov 25, 2024 at 08:21 AM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.9
 
@@ -40,6 +40,29 @@ CREATE TABLE `tb_berita` (
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tb_berita`
+--
+
+INSERT INTO `tb_berita` (`id_berita`, `id_kategori`, `id_petugas`, `judul`, `deskripsi`, `tanggal`, `foto`, `status`, `akses`, `create_at`, `update_at`) VALUES
+(1, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(2, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(3, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(4, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(5, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(6, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(7, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(8, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(9, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(10, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(11, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(12, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(13, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(14, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(15, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(16, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL),
+(17, 1, 1, 'judul', 'aaaaaaaaaa', '2024-11-25 13:10:00', '2024112587215.jpg', 'y', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -273,7 +296,7 @@ CREATE TABLE `tb_misi` (
   `id_misi` int NOT NULL,
   `id_visi` int NOT NULL,
   `id_petugas` int NOT NULL,
-  `deskripsi` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('y','t') COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL
@@ -406,7 +429,7 @@ INSERT INTO `tb_struktur` (`id_struktur`, `id_jenis_jabatan`, `id_petugas`, `nam
 CREATE TABLE `tb_visi` (
   `id_visi` int NOT NULL,
   `id_petugas` int NOT NULL,
-  `deskripsi` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deskripsi` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tahun_awal` year NOT NULL,
   `tahun_akhir` year NOT NULL,
   `status` enum('y','t') COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -550,7 +573,7 @@ ALTER TABLE `tb_visi`
 -- AUTO_INCREMENT for table `tb_berita`
 --
 ALTER TABLE `tb_berita`
-  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_berita` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tb_galeri_foto`
