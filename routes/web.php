@@ -47,7 +47,10 @@ Route::get('/visi-misi', [LandingController::class, 'visiMisi'])->name('visi-mis
 Route::get('/direktur-eksekutif', [LandingController::class, 'direkturEksekutif'])->name('direktur-eksekutif');
 Route::get('/sejarah-akurat-center', [LandingController::class, 'sejarah'])->name('sejarah');
 Route::get('/lembaga-mitra', [LandingController::class, 'mitra'])->name('mitra');
+Route::get('/tim-akurat', [LandingController::class, 'tim_akurat'])->name('tim-akurat');
 Route::get('/kontak', [LandingController::class, 'kontak'])->name('kontak');
+Route::get('/foto', [LandingController::class, 'galeri_foto'])->name('galeri_foto');
+Route::get('/video', [LandingController::class, 'galeri_video'])->name('galeri_video');
 
 Route::get('/layanan/{layanan}', [LandingController::class, 'layanan'])->name('layanan');
 Route::get('/publikasi', [LandingController::class, 'berita'])->name('berita');

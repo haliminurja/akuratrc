@@ -105,7 +105,27 @@ class LandingController extends Controller
     }
 
     public function kontak(){
-        $one = DB::table('tb_   kontak')->where('status','y')->first();
+        $one = DB::table('tb_kontak')->where('status','y')->first();
         return view('landing.kontak',compact('one'));
+    }
+
+    public function tim_akurat(){
+        $all =DB::table('tb_struktur')
+        ->select('tb_struktur.*', 'tb_petugas.nama_petugas','tb_jenis_jabatan.nama_jabatan')
+        ->leftJoin('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_struktur.id_petugas')
+        ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')
+        ->where('tb_struktur.status','y')
+        ->whereNotIn('tb_struktur.id_jenis_jabatan',[1,2,3,4])->get();
+        return view('landing.tim_akurat',compact('all'));
+    }
+
+    public function galeri_foto(){
+        $all = DB::table('tb_galeri_foto')->where('status','y')->orderByDesc('id_foto')->paginate(6);
+        return view('landing.galeri_foto',compact('all'));
+    }
+
+    public function galeri_video(){
+        $all = DB::table('tb_galeri_video')->where('status','y')->orderByDesc('id_video')->paginate(6);
+        return view('landing.galeri_video',compact('all'));
     }
 }

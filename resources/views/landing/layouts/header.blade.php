@@ -29,17 +29,17 @@
                                             <li class="{{ Request::is('layanan/2') ? 'active' : '' }}"><a href="{{ route('layanan',['layanan' => '1']) }}">STRATEGI</a></li>
                                         </ul>
                                     </li>
-                                    <li class="{{ Request::is('tim-akurat') ? 'active' : '' }}"><a href="">TIM AKURAT</a></li>
+                                    <li class="{{ Request::is('tim-akurat') ? 'active' : '' }}"><a href="{{ route('tim-akurat') }}">TIM AKURAT</a></li>
 
                                     <li class="{{ Request::is('publikasi') ? 'active' : '' }}"><a href="{{ route('berita') }}">PUBLIKASI</a></li>
                                     <li class="menu-item-has-children {{ Request::is('foto') || Request::is('video') ? 'active' : '' }}">
                                         <a href="#">GALERI</a>
                                         <ul class="sub-menu">
                                             <li class="{{ Request::is('foto') ? 'active' : '' }}">
-                                                <a href="/foto">FOTO</a>
+                                                <a href="{{ route('galeri_foto') }}">FOTO</a>
                                             </li>
                                             <li class="{{ Request::is('video') ? 'active' : '' }}">
-                                                <a href="/video">VIDEO</a>
+                                                <a href="{{ route('galeri_video') }}">VIDEO</a>
                                             </li>
                                         </ul>
                                     </li>

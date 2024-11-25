@@ -51,6 +51,7 @@
             document.getElementById('rangeValue').innerHTML = value;
         }
     </script>
+    @yield('javascript')
 </body>
 
 </html>
