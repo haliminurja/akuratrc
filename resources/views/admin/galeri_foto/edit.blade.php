@@ -29,14 +29,14 @@
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Deskripsi</span>
                         </label>
-                        <textarea type="text" name="deskripsi_galeri_foto" class="form-control form-control-sm " required>{{ $one?->deskripsi_galeri_foto }}</textarea>
+                        <textarea type="text" name="deskripsi" class="form-control form-control-sm " required>{{ $one?->deskripsi }}</textarea>
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                             <span>Foto</span>
                         </label>
                         <input type="file" id="foto" name="foto" class="form-control form-control-sm "
-                            onchange="previewFoto()" required />
+                            onchange="previewFoto()" />
                         <div id="previewContainer" class="mt-3">
                             <!-- Menampilkan gambar default jika ada -->
                             <img id="defaultPreview" src="{{ url('file/foto/' . $one?->foto) }}"

@@ -9,43 +9,39 @@
         <div class="card mb-5 mb-xl-8 border-2 shadow p-3 mb-5 bg-white rounded">
             <div class="card-header">
                 <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label fw-bolder fs-3 mb-1">Informasi Utama</span>
+                    <span class="card-label fw-bolder fs-3 mb-1">layanan</span>
                 </h3>
 
             </div>
-            <form action="{{ route('admin.header.update', $id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.layanan.update', $id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="card-body">
                     @include('errors.alert')
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
-                            <span>Judul</span>
+                            <span>jenis layanan</span>
                         </label>
-                        <input type="text" name="pesan" class="form-control form-control-sm "
-                            value="{{ $one?->pesan }}" required />
+                        <select class="selectpicker form-control form-control-sm form-select-solid " name="id_jenis_layanan"
+                            id="id_jenis_layanan" data-live-search="true" title="Pilih" required>
+                            @foreach ($all as $item)
+                                <option value="{{ $item->id_jenis_layanan }}" @selected($item->id_jenis_layanan == $one?->id_jenis_layanan)> {{ $item->nama_layanan }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
+                            <span>Nama Layanan</span>
+                        </label>
+                        <input type="text" name="nama_layanan" class="form-control form-control-sm " value="{{ $one?->nama_layanan }}" required>
+
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Deskripsi</span>
                         </label>
-                        <textarea type="text" name="deskripsi_header" class="form-control form-control-sm " required>{{ $one?->deskripsi_header }}</textarea>
+                        <textarea type="text" name="deskripsi" class="form-control form-control-sm " required>{{ $one?->deskripsi }}</textarea>
                     </div>
-                    <div class="d-flex flex-column mb-8 fv-row">
-                        <label class="d-flex align-items-center fs-6 fw-bold mb-2">
-                            <span>Foto</span>
-                        </label>
-                        <input type="file" id="foto" name="foto" class="form-control form-control-sm "
-                            onchange="previewFoto()" />
-                        <div id="previewContainer" class="mt-3">
-                            <!-- Menampilkan gambar default jika ada -->
-                            <img id="defaultPreview" src="{{ url('file/header/' . $one?->foto) }}"
-                                style="max-width: 100%; max-height: 200px; display: {{ $one?->foto ? 'block' : 'none' }}"
-                                alt="Pratinjau Foto" />
-                        </div>
-
-                    </div>
-                    <img src="{{ url('file/foto/' . $one?->foto) }}" style="max-width: 100%; max-height: 200px">
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Status</span>
@@ -93,37 +89,6 @@
     <script src="{{ asset('assets/plugins/custom/select/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/custom/select/bootstrap-select.min.js') }}"></script>
     <script>
-        function previewFoto() {
-            const input = document.getElementById('foto');
-            const previewContainer = document.getElementById('previewContainer');
-            const defaultPreview = document.getElementById('defaultPreview');
-
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const reader = new FileReader();
-
-                reader.onload = function(e) {
-                    // Jika ada file yang dipilih, tampilkan pratinjau baru
-                    if (defaultPreview) defaultPreview.style.display = 'none'; // Sembunyikan gambar default
-                    let img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.alt = "Pratinjau Foto";
-                    img.style.maxWidth = "100%";
-                    img.style.maxHeight = "200px";
-                    img.classList.add('img-thumbnail');
-
-                    // Bersihkan kontainer dan tambahkan gambar baru
-                    previewContainer.innerHTML = '';
-                    previewContainer.appendChild(img);
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                // Jika tidak ada file yang dipilih, kembalikan gambar default
-                if (defaultPreview) defaultPreview.style.display = 'block';
-                previewContainer.innerHTML = '';
-            }
-        }
         window.onbeforeunload = function() {
             $("button[type=submit]").prop("disabled", "disabled");
         }

@@ -41,7 +41,7 @@ class StrukturController extends Controller
         $save['id_petugas'] = Auth::user('web')->id_petugas;
         $extension = $request->file('foto')->getClientOriginalExtension();
         $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-        $request->file('foto')->move('struktur', $fileName);
+        $request->file('foto')->move('berkas/struktur', $fileName);
         $save['foto'] = $fileName;
         unset($save['_token']);
         unset($save['_method']);
@@ -70,13 +70,13 @@ class StrukturController extends Controller
         if ($one != null && $one->foto != null) {
            if ($request->foto != null) {
                 $fileName = $one->foto;
-                $filePath = 'struktur/' . $fileName;
+                $filePath = 'berkas/struktur/' . $fileName;
                 if (file_exists(public_path($filePath))) {
                     unlink(public_path($filePath));
                 }
                 $extension = $request->file('foto')->getClientOriginalExtension();
                 $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-                $request->file('foto')->move('struktur', $fileName);
+                $request->file('foto')->move('berkas/struktur', $fileName);
                 $save['foto'] = $fileName;
            }else{
             unset($save['foto']);
@@ -96,7 +96,7 @@ class StrukturController extends Controller
         $one = DB::table('tb_struktur')->where('id_struktur',$id)->first();
         if ($one != null && $one->foto != null) {
             $fileName = $one->foto;
-            $filePath = 'struktur/' . $fileName;
+            $filePath = 'berkas/struktur/' . $fileName;
             if (file_exists(public_path($filePath))) {
                 unlink(public_path($filePath));
             }

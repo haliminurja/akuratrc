@@ -36,7 +36,7 @@ class MitraController extends Controller
         $save['id_petugas'] = Auth::user('web')->id_petugas;
         $extension = $request->file('foto_mitra')->getClientOriginalExtension();
         $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-        $request->file('foto_mitra')->move('mitra', $fileName);
+        $request->file('foto_mitra')->move('berkas/mitra', $fileName);
         $save['foto_mitra'] = $fileName;
         unset($save['_token']);
         unset($save['_method']);
@@ -64,13 +64,13 @@ class MitraController extends Controller
         if ($one != null && $one->foto_mitra != null) {
            if ($request->foto_mitra != null) {
                 $fileName = $one->foto_mitra;
-                $filePath = 'mitra/' . $fileName;
+                $filePath = 'berkas/mitra/' . $fileName;
                 if (file_exists(public_path($filePath))) {
                     unlink(public_path($filePath));
                 }
                 $extension = $request->file('foto_mitra')->getClientOriginalExtension();
                 $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-                $request->file('foto_mitra')->move('mitra', $fileName);
+                $request->file('foto_mitra')->move('berkas/mitra', $fileName);
                 $save['foto_mitra'] = $fileName;
            }else{
             unset($save['foto_mitra']);
@@ -90,7 +90,7 @@ class MitraController extends Controller
         $one = DB::table('tb_mitra')->where('id_mitra',$id)->first();
         if ($one != null && $one->foto_mitra != null) {
             $fileName = $one->foto_mitra;
-            $filePath = 'mitra/' . $fileName;
+            $filePath = 'berkas/mitra/' . $fileName;
             if (file_exists(public_path($filePath))) {
                 unlink(public_path($filePath));
             }

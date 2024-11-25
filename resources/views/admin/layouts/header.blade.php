@@ -46,9 +46,6 @@
                     <div
                         class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-sm-8 fs-lg-6 fs-xl-6 w-275px"
                         data-kt-menu="true">
-                        <div class="menu-item px-5 my-1">
-                            <a href="" class="menu-link px-5">Ganti Password</a>
-                        </div>
                         <div class="menu-item px-5">
                             <a href="{{ route('admin.logout') }}" class="menu-link px-5">Keluar Aplikasi</a>
                         </div>

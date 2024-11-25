@@ -16,7 +16,7 @@ class LandingController extends Controller
 
     public function file($folder, $data)
     {
-        $path = public_path('../' . $folder . '/') . $data;
+        $path = public_path('../berkas/' . $folder . '/') . $data;
         if (!File::exists($path)) {
             abort(404);
         }

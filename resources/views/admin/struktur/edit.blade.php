@@ -72,7 +72,7 @@
                             <span>Foto</span>
                         </label>
                         <input type="file" id="foto" name="foto" class="form-control form-control-sm "
-                            onchange="previewFoto()" required />
+                            onchange="previewFoto()" />
                         <div id="previewContainer" class="mt-3">
                             <!-- Menampilkan gambar default jika ada -->
                             <img id="defaultPreview" src="{{ url('file/struktur/' . $one?->foto) }}"

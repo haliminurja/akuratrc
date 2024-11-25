@@ -11,19 +11,19 @@
         <div class="card mb-5 mb-xl-8 border-2 shadow p-3 mb-5 bg-white rounded">
             <div class="card-header">
                 <h3 class="card-title align-items-start flex-column">
-                    <span class="card-label fw-bolder fs-3 mb-1">Informasi Utama</span>
+                    <span class="card-label fw-bolder fs-3 mb-1">berita</span>
                 </h3>
                 <div class="card-toolbar">
 
                     <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                        <a type="button" class="btn btn-sm btn-primary" href="{{ route('admin.header.create') }}">Tambah</a>
+                        <a type="button" class="btn btn-sm btn-primary" href="{{ route('admin.berita.create') }}">Tambah</a>
                     </div>
                 </div>
 
             </div>
             <div class="card-body">
                 <div class="text-muted mb-3">
-                    Pada halaman ini digunakan untuk menambah, mengedit, dan detail Informasi Utama
+                    Pada halaman ini digunakan untuk menambah, mengedit, dan detail berita
                 </div>
                 <div class="notice d-flex bg-light-primary border-primary mb-3 rounded border border-dashed p-3">
                     <div class="d-flex flex-stack">
@@ -31,8 +31,8 @@
                             <div class="fs-12 text-gray-700">Berikut layanan data.
                             </div>
                             <div class="fs-12 text-gray-700">
-                                <div style="color: #d80000; font-weight: 500;">Data Informasi Utama adalah blok</div>
-                                <div style="color: #008c46 ; font-weight: 500;">Data Informasi Utama adalah aktif</div>
+                                <div style="color: #d80000; font-weight: 500;">Data berita adalah blok</div>
+                                <div style="color: #008c46 ; font-weight: 500;">Data berita adalah aktif</div>
                             </div>
                         </div>
                     </div>
@@ -45,8 +45,9 @@
                         <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0 ">
                             <th class="w-25px"></th>
                             <th class="min-w-100px">Actions</th>
+                            <th class="min-w-150px">Kategori</th>
                             <th class="min-w-150px">Judul</th>
-                            <th class="min-w-150px">Deskripsi</th>
+                            <th class="min-w-150px">Tanggal</th>
                             <th class="min-w-150px">Dibuat Oleh?</th>
                             <th class="min-w-150px">Status</th>
                         </tr>
@@ -92,7 +93,7 @@
                 buttons: [{
                     extend: 'colvis',
                     collectionLayout: 'fixed columns',
-                    collectionTitle: 'Column headerbility control',
+                    collectionTitle: 'Column beritability control',
                     className: 'btn btn-sm btn-primary rounded',
                     columns: ':not(.noVis)'
 
@@ -141,12 +142,12 @@
                     {
                         data: "action",
                         render: function (data) {
-                            var detail = '{{ route('admin.header.show', [':header']) }}';
-                            var edit = '{{ route('admin.header.edit', [':header']) }}';
+                            var detail = '{{ route('admin.berita.show', [':berita']) }}';
+                            var edit = '{{ route('admin.berita.edit', [':berita']) }}';
                             var x_edit = "";
                             var x_detail = "";
-                            x_detail = `<a data-toggle='tooltip' data-placement='top' title='View' href='${detail.replace(':header', data)}' class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm me-1'><span class='bi bi-file-text ' aria-hidden='true'></span></a>`;
-                            x_edit = `<a data-toggle='tooltip' data-placement='top' title='Edit' href='${edit.replace(':header', data)}' class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm me-1'><span class='bi bi-pencil ' aria-hidden='true'></span> </a>`;
+                            x_detail = `<a data-toggle='tooltip' data-placement='top' title='View' href='${detail.replace(':berita', data)}' class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm me-1'><span class='bi bi-file-text ' aria-hidden='true'></span></a>`;
+                            x_edit = `<a data-toggle='tooltip' data-placement='top' title='Edit' href='${edit.replace(':berita', data)}' class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm me-1'><span class='bi bi-pencil ' aria-hidden='true'></span> </a>`;
                             x_delete = `<a data-toggle='tooltip' data-placement='top' title='Delete' onclick='deleteConfirmation(${data})' class='btn btn-icon btn-bg-light btn-active-text-primary btn-sm me-1'><span class='bi bi-trash ' aria-hidden='true'></span></a>`;
                             return `${x_detail} ${x_edit} ${x_delete}`;
                         },
@@ -154,12 +155,16 @@
                         searchable: true,
                     },
                     {
-                        data: "pesan",
-                        name: "pesan"
+                        data: "nama_kategori",
+                        name: "nama_kategori"
                     },
                     {
-                        data: "deskripsi",
-                        name: "deskripsi"
+                        data: "judul",
+                        name: "judul"
+                    },
+                    {
+                        data: "tanggal",
+                        name: "tanggal"
                     },
                     {
                         data: "nama_petugas",
@@ -173,7 +178,7 @@
             });
         });
 
-        function deleteConfirmation(header) {
+        function deleteConfirmation(berita) {
             Swal.fire({
                 title: 'Apa kamu yakin?',
                 text: "Itu akan dihapus secara permanen!",
@@ -185,12 +190,12 @@
                 confirmButtonText: 'Ya, hapus!',
             }).then((result) => {
                 if (result.value) {
-                    var destroy = '{{ route('admin.header.destroy', [':header']) }}';
+                    var destroy = '{{ route('admin.berita.destroy', [':berita']) }}';
                     $.ajax({
-                        url: destroy.replace(':header', header),
+                        url: destroy.replace(':berita', berita),
                         method: 'DELETE',
                         data: {
-                            "header": header,
+                            "berita": berita,
                             "_token": "{{ csrf_token() }}"
                         },
                         success: function(data) {

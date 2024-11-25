@@ -36,7 +36,7 @@ class GaleriFotoController extends Controller
         $save['id_petugas'] = Auth::user('web')->id_petugas;
         $extension = $request->file('foto')->getClientOriginalExtension();
         $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-        $request->file('foto')->move('foto', $fileName);
+        $request->file('foto')->move('berkas/foto', $fileName);
         $save['foto'] = $fileName;
         unset($save['_token']);
         unset($save['_method']);
@@ -64,13 +64,13 @@ class GaleriFotoController extends Controller
         if ($one != null && $one->foto != null) {
            if ($request->foto != null) {
                 $fileName = $one->foto;
-                $filePath = 'foto/' . $fileName;
+                $filePath = 'berkas/foto/' . $fileName;
                 if (file_exists(public_path($filePath))) {
                     unlink(public_path($filePath));
                 }
                 $extension = $request->file('foto')->getClientOriginalExtension();
                 $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-                $request->file('foto')->move('foto', $fileName);
+                $request->file('foto')->move('berkas/foto', $fileName);
                 $save['foto'] = $fileName;
            }else{
             unset($save['foto']);
@@ -90,7 +90,7 @@ class GaleriFotoController extends Controller
         $one = DB::table('tb_galeri_foto')->where('id_foto',$id)->first();
         if ($one != null && $one->foto != null) {
             $fileName = $one->foto;
-            $filePath = 'foto/' . $fileName;
+            $filePath = 'berkas/foto/' . $fileName;
             if (file_exists(public_path($filePath))) {
                 unlink(public_path($filePath));
             }

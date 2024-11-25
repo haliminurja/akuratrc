@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\GaleriFotoController;
 use App\Http\Controllers\Admin\GaleriVideoController;
 use App\Http\Controllers\Admin\HeaderController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Admin\JenisJabatanController;
 use App\Http\Controllers\Admin\JenisLayananController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\KontakController;
+use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\MisiController;
 use App\Http\Controllers\Admin\MitraController;
 use App\Http\Controllers\Admin\SejarahController;
@@ -34,6 +36,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('galeri_video', GaleriVideoController::class);
     Route::resource('kontak', KontakController::class);
     Route::resource('header', HeaderController::class);
+    Route::resource('layanan', LayananController::class);
+    Route::resource('berita', BeritaController::class);
 
 });
 Route::get('/', [LandingController::class, 'index'])->name('index');

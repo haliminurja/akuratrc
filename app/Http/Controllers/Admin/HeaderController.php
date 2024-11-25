@@ -36,7 +36,7 @@ class HeaderController extends Controller
         $save['id_petugas'] = Auth::user('web')->id_petugas;
         $extension = $request->file('foto')->getClientOriginalExtension();
         $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-        $request->file('foto')->move('header', $fileName);
+        $request->file('foto')->move('berkas/header', $fileName);
         $save['foto'] = $fileName;
         unset($save['_token']);
         unset($save['_method']);
@@ -64,13 +64,13 @@ class HeaderController extends Controller
         if ($one != null && $one->foto != null) {
            if ($request->foto != null) {
                 $fileName = $one->foto;
-                $filePath = 'header/' . $fileName;
+                $filePath = 'berkas/header/' . $fileName;
                 if (file_exists(public_path($filePath))) {
                     unlink(public_path($filePath));
                 }
                 $extension = $request->file('header')->getClientOriginalExtension();
                 $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-                $request->file('header')->move('header', $fileName);
+                $request->file('header')->move('berkas/header', $fileName);
                 $save['header'] = $fileName;
            }else{
             unset($save['header']);
@@ -90,7 +90,7 @@ class HeaderController extends Controller
         $one = DB::table('tb_header')->where('id_header',$id)->first();
         if ($one != null && $one->foto != null) {
             $fileName = $one->foto;
-            $filePath = 'header/' . $fileName;
+            $filePath = 'berkas/header/' . $fileName;
             if (file_exists(public_path($filePath))) {
                 unlink(public_path($filePath));
             }
