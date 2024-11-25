@@ -52,8 +52,7 @@
                                                 <i class="flaticon-pin"></i>
                                             </div>
                                             <div class="content">
-                                                <p>Graha Askara Juanda Regency blok DD-12, Dabean, Pabean, Sedati,
-                                                    Sidoarjo Regency, East Java 61253
+                                                <p>Graha Askara Juanda Regency blok DD-12, Dabean, Pabean, Sedati, Sidoarjo Regency, East Java 61253
                                                 </p>
                                             </div>
                                         </li>

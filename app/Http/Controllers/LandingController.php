@@ -41,7 +41,9 @@ class LandingController extends Controller
 
     public function visiMisi()
     {
-        return '';
+        $visi = DB::table('tb_visi')->where('status','y')->first();
+        $misi = DB::table('tb_misi')->where('status','y')->where('id_visi',$visi?->id_visi)->get();
+        return view('landing.visi_misi',compact('visi','misi'));
     }
 
 
@@ -70,6 +72,7 @@ class LandingController extends Controller
         $all = $query->paginate(6);
         return view('landing.berita',compact('all','kategori'));
     }
+
     public function beritaDetail($id)
     {
         $berita = DB::table('tb_berita')->whereNot('id_berita',$id)->limit(4)->orderByDesc('tanggal')->get();
@@ -79,5 +82,30 @@ class LandingController extends Controller
         ->leftJoin('tb_kategori_berita', 'tb_kategori_berita.id_kategori', '=', 'tb_berita.id_kategori')
         ->where('tb_berita.id_berita',$id)->first();
         return view('landing.berita_detail',compact('berita','one'));
+    }
+
+    public function direkturEksekutif(){
+        $all =DB::table('tb_struktur')
+        ->select('tb_struktur.*', 'tb_petugas.nama_petugas','tb_jenis_jabatan.nama_jabatan')
+        ->leftJoin('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_struktur.id_petugas')
+        ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')->where('tb_struktur.status','y')->get();
+        return view('landing.direktur_eksekutif',compact('all'));
+    }
+
+    public function sejarah(){
+
+        $one = DB::table('tb_sejarah')->where('status','y')->first();
+        return view('landing.sejarah',compact('one'));
+    }
+
+    public function mitra(){
+
+        $all = DB::table('tb_mitra')->where('status','y')->get();
+        return view('landing.mitra',compact('all'));
+    }
+
+    public function kontak(){
+        $one = DB::table('tb_   kontak')->where('status','y')->first();
+        return view('landing.kontak',compact('one'));
     }
 }

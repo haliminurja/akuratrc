@@ -44,6 +44,11 @@ Route::get('/', [LandingController::class, 'index'])->name('index');
 Route::get('file/{folder}/{data}', [LandingController::class, 'file'])->where('data', '.*');
 
 Route::get('/visi-misi', [LandingController::class, 'visiMisi'])->name('visi-misi');
+Route::get('/direktur-eksekutif', [LandingController::class, 'direkturEksekutif'])->name('direktur-eksekutif');
+Route::get('/sejarah-akurat-center', [LandingController::class, 'sejarah'])->name('sejarah');
+Route::get('/lembaga-mitra', [LandingController::class, 'mitra'])->name('mitra');
+Route::get('/kontak', [LandingController::class, 'kontak'])->name('kontak');
+
 Route::get('/layanan/{layanan}', [LandingController::class, 'layanan'])->name('layanan');
 Route::get('/publikasi', [LandingController::class, 'berita'])->name('berita');
 Route::get('/publikasi/{id}', [LandingController::class, 'beritaDetail'])->name('berita-detail');

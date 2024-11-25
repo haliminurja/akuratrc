@@ -16,12 +16,20 @@
                                         class="menu-item-has-children {{ Request::is('visi-misi') || Request::is('direktur-eksekutif') || Request::is('pencapaian') || Request::is('sejarah-akurat-center') || Request::is('lembaga-mitra') ? 'active' : '' }}">
                                         <a href="#">TENTANG AKURAT</a>
                                         <ul class="sub-menu">
-                                            <li class="{{ Request::is('visi-misi') ? 'active' : '' }}"><a href="/visi-misi"> Visi dan Misi</a></li>
-                                            <li class="{{ Request::is('direktur-eksekutif') ? 'active' : '' }}"><a href="/direktur-eksekutif">Direktur Eksekutif</a></li>
-                                            <li class="{{ Request::is('sejarah-akurat-center') ? 'active' : '' }}"><a href="/sejarah-akurat-center">Sejarah Akurat Center</a></li>
-                                            <li class="{{ Request::is('lembaga-mitra') ? 'active' : '' }}"><a href="/lembaga-mitra">Lembaga Mitra</a></li>
+                                            <li class="{{ Request::is('visi-misi') ? 'active' : '' }}"><a href="{{ route('visi-misi') }}"> Visi dan Misi</a></li>
+                                            <li class="{{ Request::is('direktur-eksekutif') ? 'active' : '' }}"><a href="{{ route('direktur-eksekutif') }}">Direktur Eksekutif</a></li>
+                                            <li class="{{ Request::is('sejarah-akurat-center') ? 'active' : '' }}"><a href="{{ route('sejarah') }}">Sejarah Akurat Center</a></li>
+                                            <li class="{{ Request::is('lembaga-mitra') ? 'active' : '' }}"><a href="{{ route('mitra') }}">Lembaga Mitra</a></li>
                                         </ul>
                                     </li>
+                                    <li class="menu-item-has-children {{ Request::is('layanan*') ? 'active' : '' }}">
+                                        <a href="#">LAYANAN</a>
+                                        <ul class="sub-menu">
+                                            <li class="{{ Request::is('layanan/1') ? 'active' : '' }}"><a href="{{ route('layanan',['layanan' => '1']) }}">RISET</a></li>
+                                            <li class="{{ Request::is('layanan/2') ? 'active' : '' }}"><a href="{{ route('layanan',['layanan' => '1']) }}">STRATEGI</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="{{ Request::is('tim-akurat') ? 'active' : '' }}"><a href="">TIM AKURAT</a></li>
 
                                     <li class="{{ Request::is('publikasi') ? 'active' : '' }}"><a href="{{ route('berita') }}">PUBLIKASI</a></li>
                                     <li class="menu-item-has-children {{ Request::is('foto') || Request::is('video') ? 'active' : '' }}">
@@ -35,7 +43,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="{{ Request::is('kontak') ? 'active' : '' }}"><a href="/kontak">KONTAK</a></li>
+                                    <li class="{{ Request::is('kontak') ? 'active' : '' }}"><a href="{{route('kontak')}}">KONTAK</a></li>
                                 </ul>
                                 </ul>
                             </div>
