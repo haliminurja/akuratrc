@@ -49,11 +49,11 @@
                         <span class="menu-icon"></span>
                         <span class="menu-title">struktur</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.kontak.store') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Info Lembaga</span>
                     </a>
-                    <a class="menu-link" href="">
+                    <a class="menu-link" href="{{ route('admin.header.store') }}">
                         <span class="menu-icon"></span>
                         <span class="menu-title">Info Utama</span>
                     </a>
