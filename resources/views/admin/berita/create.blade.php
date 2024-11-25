@@ -45,9 +45,15 @@
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Foto</span>
                         </label>
-                        <input type="file" id="foto" name="foto" class="form-control form-control-sm "
+                        <input type="file" accept=".png, .jpg, .jpeg" id="foto" name="foto" class="form-control form-control-sm "
                             onchange="previewFoto()" required />
                         <div id="previewContainer" class="mt-3"></div>
+                    </div>
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-bold mb-2 ">
+                            <span>Dokumen</span>
+                        </label>
+                        <input type="file" accept=".pdf" id="dokumen" name="dokumen" class="form-control form-control-sm " />
                     </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">

@@ -51,7 +51,6 @@
                             </div>
                             <div class="services__content-three">
                                 <p>{{ $item->deskripsi }}</p>
-                                <a href="#" class="btn btn-two">Detail</a>
                             </div>
                         </div>
                     </div>

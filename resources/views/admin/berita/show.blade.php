@@ -35,6 +35,10 @@
                 <img id="defaultPreview" src="{{ url('file/berita/' . $one?->foto) }}"
                     style="max-width: 100%; max-height: 200px; display: {{ $one?->foto ? 'block' : 'none' }}"
                     alt="Pratinjau Foto">
+
+                @if ($one?->dokumen != null)
+                    <a href="{{ url('file/dokumen/' . $one?->dokumen) }}" class="btn btn-sm btn-primary p-1 w-100px fs-8 mt-2">Download</a>
+                @endif
             </div>
         </div>
     </div>

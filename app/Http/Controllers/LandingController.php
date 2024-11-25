@@ -88,7 +88,9 @@ class LandingController extends Controller
         $all =DB::table('tb_struktur')
         ->select('tb_struktur.*', 'tb_petugas.nama_petugas','tb_jenis_jabatan.nama_jabatan')
         ->leftJoin('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_struktur.id_petugas')
-        ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')->where('tb_struktur.status','y')->get();
+        ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')
+        ->where('tb_struktur.status','y')
+        ->whereIn('tb_struktur.id_jenis_jabatan',[1,2,3,4,5])->get();
         return view('landing.direktur_eksekutif',compact('all'));
     }
 
@@ -110,13 +112,29 @@ class LandingController extends Controller
     }
 
     public function tim_akurat(){
-        $all =DB::table('tb_struktur')
+
+        $top1 =DB::table('tb_struktur')
         ->select('tb_struktur.*', 'tb_petugas.nama_petugas','tb_jenis_jabatan.nama_jabatan')
         ->leftJoin('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_struktur.id_petugas')
         ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')
-        ->where('tb_struktur.status','y')
-        ->whereNotIn('tb_struktur.id_jenis_jabatan',[1,2,3,4])->get();
-        return view('landing.tim_akurat',compact('all'));
+        ->whereIn('tb_struktur.id_jenis_jabatan',[1,2])
+        ->where('tb_struktur.status','y')->get();
+
+        $top2 =DB::table('tb_struktur')
+        ->select('tb_struktur.*', 'tb_petugas.nama_petugas','tb_jenis_jabatan.nama_jabatan')
+        ->leftJoin('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_struktur.id_petugas')
+        ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')
+        ->whereIn('tb_struktur.id_jenis_jabatan',[3,4,5])
+        ->where('tb_struktur.status','y')->get();
+
+        $top3 =DB::table('tb_struktur')
+        ->select('tb_struktur.*', 'tb_petugas.nama_petugas','tb_jenis_jabatan.nama_jabatan')
+        ->leftJoin('tb_petugas', 'tb_petugas.id_petugas', '=', 'tb_struktur.id_petugas')
+        ->leftJoin('tb_jenis_jabatan', 'tb_jenis_jabatan.id_jenis_jabatan', '=', 'tb_struktur.id_jenis_jabatan')
+        ->whereNotIn('tb_struktur.id_jenis_jabatan',[1,2,3,4,5])
+        ->where('tb_struktur.status','y')->get();
+
+        return view('landing.tim_akurat',compact('top1','top2','top3'));
     }
 
     public function galeri_foto(){

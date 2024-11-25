@@ -44,6 +44,12 @@ class BeritaController extends Controller
         $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
         $request->file('foto')->move('berkas/berita', $fileName);
         $save['foto'] = $fileName;
+        if ($request->dokumen != null) {
+            $extension1 = $request->file('dokumen')->getClientOriginalExtension();
+            $fileName1 = Costum::generateURL($request->judul).substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension1;
+            $request->file('dokumen')->move('berkas/dokumen', $fileName1);
+            $save['dokumen'] = $fileName1;
+        }
         unset($save['_token']);
         unset($save['_method']);
         DB::table('tb_berita')->insertGetId($save);
@@ -68,23 +74,40 @@ class BeritaController extends Controller
 
         $save = $request->all();
         $one = DB::table('tb_berita')->where('id_berita',$id)->first();
-        if ($one != null && $one->foto != null) {
-           if ($request->foto != null) {
-                $fileName = $one->foto;
-                $filePath = 'berkas/berita/' . $fileName;
+        if ($one != null && $one->dokumen != null) {
+           if ($request->dokumen != null) {
+                $fileName = $one->dokumen;
+                $filePath = 'berkas/dokumen/' . $fileName;
                 if (file_exists(public_path($filePath))) {
                     unlink(public_path($filePath));
                 }
-                $extension = $request->file('berita')->getClientOriginalExtension();
-                $fileName = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
-                $request->file('berita')->move('berkas/berita', $fileName);
-                $save['berita'] = $fileName;
+                $extension = $request->file('dokumen')->getClientOriginalExtension();
+                $fileName = Costum::generateURL($request->judul).substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension;
+                $request->file('dokumen')->move('berkas/dokumen', $fileName);
+                $save['dokumen'] = $fileName;
            }else{
-            unset($save['berita']);
+            unset($save['dokumen']);
            }
         }else{
-            unset($save['berita']);
+            unset($save['dokumen']);
         }
+        if ($one != null && $one->foto != null) {
+            if ($request->foto != null) {
+                 $fileName1 = $one->foto;
+                 $filePath1 = 'berkas/berita/' . $fileName1;
+                 if (file_exists(public_path($filePath1))) {
+                     unlink(public_path($filePath1));
+                 }
+                 $extension1 = $request->file('berita')->getClientOriginalExtension();
+                 $fileName1 = substr(date('Ymd') . rand(10000, 99999), 0, 20). '.' . $extension1;
+                 $request->file('berita')->move('berkas/berita', $fileName1);
+                 $save['berita'] = $fileName1;
+            }else{
+             unset($save['berita']);
+            }
+         }else{
+             unset($save['berita']);
+         }
         $save['id_petugas'] = Auth::user('web')->id_petugas;
         unset($save['_token']);
         unset($save['_method']);

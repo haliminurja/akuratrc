@@ -26,7 +26,7 @@
                             id="id_visi" data-live-search="true" title="Pilih" required>
                             @foreach ($all as $item)
                                 <option value="{{ $item->id_visi }}" @selected($item->id_visi == $one?->id_visi)>
-                                    {{ $item->deskripsi . ' ' . ' (' . $item->tahun_awal . ' - ' . $item->tahun_akhir . ')' }}
+                                    {{ Str::limit($item->deskripsi . ' (' . $item->tahun_awal . ' - ' . $item->tahun_akhir . ')', 100) }}
                                 </option>
                             @endforeach
                         </select>

@@ -49,7 +49,7 @@
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                             <span>Foto</span>
                         </label>
-                        <input type="file" id="foto_mitra" name="foto_mitra" class="form-control form-control-sm "
+                        <input type="file" accept=".png, .jpg, .jpeg" id="foto_mitra" name="foto_mitra" class="form-control form-control-sm "
                             onchange="previewFoto()" />
                         <div id="previewContainer" class="mt-3">
                             <!-- Menampilkan gambar default jika ada -->

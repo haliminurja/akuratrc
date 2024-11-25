@@ -46,7 +46,6 @@
                             <th class="w-25px"></th>
                             <th class="min-w-100px">Actions</th>
                             <th class="min-w-150px">layanan</th>
-                            <th class="min-w-150px">deskripsi</th>
                             <th class="min-w-150px">Dibuat Oleh?</th>
                             <th class="min-w-150px">Status</th>
                         </tr>

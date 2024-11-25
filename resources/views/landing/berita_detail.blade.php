@@ -46,17 +46,10 @@
                                     </ul>
                                 </div>
                                 <p>{{$one->deskripsi}}</p>
-                                <div class="blog__details-bottom">
-                                    <div class="post-share">
-                                        <h5 class="title">Share:</h5>
-                                        <ul class="list-wrap">
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                @if ($one?->dokumen != null)
+                                    <p class="mb-2">Download Laporan PDF:</p>
+                                    <a href="{{ url('file/dokumen/' . $one?->dokumen) }}" target="_blank" class="btn btn-sm btn-primary p-2 w-100px">Download</a>
+                                @endif
                             </div>
                         </div>
                     </div>

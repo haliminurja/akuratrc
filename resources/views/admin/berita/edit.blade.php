@@ -48,7 +48,7 @@
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2">
                             <span>Foto</span>
                         </label>
-                        <input type="file" id="foto" name="foto" class="form-control form-control-sm "
+                        <input type="file" accept=".png, .jpg, .jpeg" id="foto" name="foto" class="form-control form-control-sm "
                             onchange="previewFoto()" />
                         <div id="previewContainer" class="mt-3">
                             <!-- Menampilkan gambar default jika ada -->
@@ -60,6 +60,15 @@
                     </div>
                     <img src="{{ url('file/foto/' . $one?->foto) }}" style="max-width: 100%; max-height: 200px">
 
+                    <div class="d-flex flex-column mb-8 fv-row">
+                        <label class="d-flex align-items-center fs-6 fw-bold mb-2 ">
+                            <span>Dokumen</span>
+                        </label>
+                        <input type="file" accept=".pdf" id="dokumen" name="dokumen" class="form-control form-control-sm " />
+                        @if ($one?->dokumen != null)
+                            <a href="{{ url('file/dokumen/' . $one?->dokumen) }}" class="btn btn-sm btn-primary p-1 w-100px fs-8 mt-2">Download</a>
+                        @endif
+                    </div>
                     <div class="d-flex flex-column mb-8 fv-row">
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Tanggal</span>

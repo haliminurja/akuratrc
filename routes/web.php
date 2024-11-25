@@ -20,28 +20,31 @@ use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('index');
     Route::get('/login', [HomeController::class, 'login'])->name('login');
     Route::post('/login', [HomeController::class, 'auth_login'])->name('auth_login');
     Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
-
-    Route::resource('sejarah', SejarahController::class);
-    Route::resource('visi', VisiController::class);
-    Route::resource('misi', MisiController::class);
-    Route::resource('mitra', MitraController::class);
-    Route::resource('kategori', KategoriController::class);
-    Route::resource('jenis_jabatan', JenisJabatanController::class);
-    Route::resource('jenis_layanan', JenisLayananController::class);
-    Route::resource('struktur', StrukturController::class);
-    Route::resource('galeri_foto', GaleriFotoController::class);
-    Route::resource('galeri_video', GaleriVideoController::class);
-    Route::resource('kontak', KontakController::class);
-    Route::resource('header', HeaderController::class);
-    Route::resource('layanan', LayananController::class);
-    Route::resource('berita', BeritaController::class);
-    Route::resource('user', UserController::class);
-    Route::post('user/edit/all', [UserController::class, 'edit_multi'])->name('user.edit.all');
+    Route::middleware(['auth:web'])->group(function () {
+        Route::get('/', [HomeController::class, 'index'])->name('index');
+        Route::resource('sejarah', SejarahController::class);
+        Route::resource('visi', VisiController::class);
+        Route::resource('misi', MisiController::class);
+        Route::resource('mitra', MitraController::class);
+        Route::resource('kategori', KategoriController::class);
+        Route::resource('jenis_jabatan', JenisJabatanController::class);
+        Route::resource('jenis_layanan', JenisLayananController::class);
+        Route::resource('struktur', StrukturController::class);
+        Route::resource('galeri_foto', GaleriFotoController::class);
+        Route::resource('galeri_video', GaleriVideoController::class);
+        Route::resource('kontak', KontakController::class);
+        Route::resource('header', HeaderController::class);
+        Route::resource('layanan', LayananController::class);
+        Route::resource('berita', BeritaController::class);
+        Route::resource('user', UserController::class);
+        Route::post('user/edit/all', [UserController::class, 'edit_multi'])->name('user.edit.all');
+    });
 });
+
+
 Route::get('/', [LandingController::class, 'index'])->name('index');
 Route::get('file/{folder}/{data}', [LandingController::class, 'file'])->where('data', '.*');
 

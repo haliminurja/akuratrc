@@ -33,7 +33,7 @@
                         <label class="d-flex align-items-center fs-6 fw-bold mb-2 required">
                             <span>Foto</span>
                         </label>
-                        <input type="file" id="foto" name="foto" class="form-control form-control-sm "  onchange="previewFoto()" required />
+                        <input type="file" accept=".png, .jpg, .jpeg" id="foto" name="foto" class="form-control form-control-sm "  onchange="previewFoto()" required />
                         <div id="previewContainer" class="mt-3"></div>
                     </div>
                     <div class="text-center">
